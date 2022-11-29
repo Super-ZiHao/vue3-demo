@@ -1,6 +1,7 @@
 <script lang='ts' setup>
 import Cats from './components/Cats.vue'
 import Auth from './components/Auth.vue';
+import List from './components/List.vue';
 type Props = {}
 const { } = defineProps<Props>();
 </script>
@@ -8,7 +9,8 @@ const { } = defineProps<Props>();
 <template>
   <div>
     <!-- <Cats /> -->
-    <Auth />
+    <!-- <Auth /> -->
+    <List />
   </div>
 </template>
 
