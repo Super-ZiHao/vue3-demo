@@ -13,7 +13,6 @@ const codeUrl = ref<string>("http://localhost:3000/cats/code");
 
 const resetCode = () => {
   codeUrl.value = codeUrl.value + '?' + Math.round(Math.random())
-  console.log(codeUrl.value);
 };
 
 const submit = () => {

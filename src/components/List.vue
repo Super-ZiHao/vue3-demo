@@ -1,12 +1,11 @@
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
 import api from '../utils/api';
-import type { FormInstance } from 'element-plus'
 
-const addListApi = (data) => api.post('/list', data)
-const getListApi = (data) => api.get('/list', {params: data})
-const delListApi = (data) => api.delete(`/list/${data.id}`)
-const updateListApi = (data) => api.patch(`/list/${data.id}`, data)
+const addListApi = (data: any) => api.post('/list', data)
+const getListApi = (data: any) => api.get('/list', {params: data})
+const delListApi = (data: any) => api.delete(`/list/${data.id}`)
+const updateListApi = (data: any) => api.patch(`/list/${data.id}`, data)
 
 
 const total = ref<number>(0)
@@ -34,7 +33,7 @@ const openDialog = () => {
 }
 //初始化表格数据
 const init = async () => {
-  const list = (await getListApi(search)).data
+  const list = (await getListApi(search))?.data
   tableData.value = list?.data ?? []
   total.value = list.total ?? 0
 }
@@ -77,9 +76,9 @@ const close = () => {
           <el-button @click="openDialog" type="primary" style="margin-left:10px;">添加</el-button>
       </div>
       <el-table border :data="tableData" style="width: 100%;margin-top: 30px;">
+        <el-table-column prop="id" label="id" />
           <el-table-column prop="name" label="名字" />
           <el-table-column prop="desc" label="描述" />
-          <el-table-column prop="id" label="id" />
           <el-table-column>
               <template #default="scope">
                   <el-button @click="edit(scope.row)">编辑</el-button>
